@@ -54,7 +54,8 @@ HTTP/1.1 503 Service Unavailable
 Content-Length: 317
 Content-Type: application/json
 Date: Fri, 23 Sep 2016 08:55:16 GMT
-
+```
+```json
 {
     "ok": false,
     "has_warnings": true,
