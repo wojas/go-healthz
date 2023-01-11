@@ -1,14 +1,17 @@
 # go-healthz
 
-[![CircleCI](https://circleci.com/gh/MEDIGO/go-healthz.svg?style=shield)](https://circleci.com/gh/MEDIGO/go-healthz)
+[![Go Reference](https://pkg.go.dev/badge/github.com/wojas/go-healthz.svg)](https://pkg.go.dev/github.com/wojas/go-healthz)
+[![CI Tests](https://github.com/wojas/go-healthz/actions/workflows/go.yml/badge.svg)](https://github.com/wojas/go-healthz/actions/workflows/go.yml)
 
 This package provides an HTTP handler that returns information about the health status of the application. If the application is healthy and all the registered check pass, it returns a `200 OK` HTTP status, otherwise, it fails with a `503 Service Unavailable`. All responses contain a JSON encoded payload with information about the runtime system, current checks statuses and some configurable metadata.
 
 This is a fork of [github.com/MEDIGO/go-healthz](https://github.com/MEDIGO/go-healthz) with breaking changes. Changes include:
 
-- Added the ability to return warnings from checkers that are not considered service failures.
-- Renamed Set and Delete to SetMeta and DeleteMeta (this is a breaking change)
-- Added Set to statically set a check status without callbacks with optional timeout. This is useful if you already have an event loop.
+- Added the ability to return warnings from checkers that are not considered service failures using `Warn` and `Warnf`.
+- Renamed Set and Delete to `SetMeta` and `DeleteMeta` (this is a breaking change)
+- Added `Set` to statically set a check status without callbacks with optional timeout. This is useful if you already have an event loop.
+- `RegisterRemote` to include a remote healthz endpoint in the checks.
+- A `ScopedMultiError` can return more than one error or warning per check.
 - Several locking fixes.
 
 
